@@ -16,3 +16,16 @@ I can use some codes from [this project of mine](https://github.com/dezashibi-c-
 This is also another CLI tool, it tokenize the given string let it be a line from a file or direct input and will tell if the chunks from the input are palindrome first then if they can be converted into an integer number it will check also for prime numbers as well.
 
 Output: `'<string>' -> [not] palindrome, [not] prime`
+
+## Commands
+
+- `check` check the input based on argument passed to the program and shows the result on screen
+- `file` gets the file name and read and process line by line and saves the result in the `filename_output.ext`
+
+## Memory Management
+
+I would say this program just like the [previous one](https://github.com/dezashibi-c-projects/b-calculator) has limitations for sure, I might tweak limitations later on but for now I will leave the
+limitation constants as they are.
+
+So, the TL;DR; is that number of entries per line and number of character per each entry is limited. The lesson here again is not to be shy when introducing limitations and also don't be afraid
+to use fixed amount of memory especially when the program is supposed to end in a short amount of time.
