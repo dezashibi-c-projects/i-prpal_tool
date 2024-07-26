@@ -15,4 +15,4 @@ I can use some codes from [this project of mine](https://github.com/dezashibi-c-
 
 This is also another CLI tool, it tokenize the given string let it be a line from a file or direct input and will tell if the chunks from the input are palindrome first then if they can be converted into an integer number it will check also for prime numbers as well.
 
-Output: `'<string>' -> [not] palindrome`, `[not] prime`
+Output: `'<string>' -> [not] palindrome, [not] prime`
