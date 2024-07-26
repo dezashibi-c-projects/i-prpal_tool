@@ -161,7 +161,7 @@ def_invoke_fn_as(file_fn)
 
     while (fgets(buffer, sizeof(buffer), file) != NULL)
     {
-        // ./calc.exe <cmd> args
+        // ./prpal_tool.exe <cmd> args
         // 0           1    2 3 ...
         // we always have 2 args available
         temp_argc = arg_starts_at;

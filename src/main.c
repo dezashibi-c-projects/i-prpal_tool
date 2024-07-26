@@ -36,7 +36,7 @@ int main(int argc, char* argv[])
 
     if (argc < 2)
     {
-        puts(FG_RED "error: " COLOR_RESET "not enough number of arguments\n\t" FG_GREEN "./calc.exe <op> <...args>\n" COLOR_RESET);
+        puts(FG_RED "error: " COLOR_RESET "not enough number of arguments\n\t" FG_GREEN "./prpal_tool.exe <op> <...args>\n" COLOR_RESET);
 
         show_help(commands, commands_size);
 
