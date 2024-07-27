@@ -84,9 +84,8 @@ def_invoke_fn_as(file_fn)
             check_token_size(curr_tok, true);
 
             if (curr_tok != NULL)
-            {
                 check_prpal_and_get_output(curr_tok, output_file);
-            }
+
             curr_tok = strtok(NULL, WHITE_SPACE);
         }
     }
