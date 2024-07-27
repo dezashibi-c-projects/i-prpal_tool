@@ -127,6 +127,4 @@ void show_help();
 #define def_commands Command commands[]
 #define def_commands_size const size_t commands_size
 
-#define CALCULATE_COMMANDS_COUNT() (sizeof(commands) / sizeof(commands[0]))
-
 #endif // COMMANDS__H__

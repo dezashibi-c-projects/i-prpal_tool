@@ -29,7 +29,7 @@ def_commands = {
     {"div", "divides 2 or more arguments from each other, needs at least 1 number and non-zero numbers", division_fn},
     {"f", "opens the given file, runs each operations per line, insert the result of it at the beginning of the next line and continues until the end of file", file_fn},
 };
-def_commands_size = CALCULATE_COMMANDS_COUNT();
+def_commands_size = (sizeof(commands) / sizeof(commands[0]));
 
 int main(int argc, char* argv[])
 {
