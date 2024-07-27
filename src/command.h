@@ -87,7 +87,7 @@ typedef struct Command
 {
     char* name;
     char* help;
-    double (*invoke)(struct Command* cmd, int argc, char argv[MAX_TOK_PER_LINE][MAX_TOK_SIZE]);
+    void (*invoke)(struct Command* cmd, int argc, char argv[MAX_TOK_PER_LINE][MAX_TOK_SIZE]);
 } Command;
 
 /**
@@ -97,7 +97,7 @@ typedef struct Command
  *
  * @param CMD_FN_IDENTIFIER command identifier name, better to end with `_fn`.
  */
-#define def_invoke_fn_as(CMD_FN_IDENTIFIER) double CMD_FN_IDENTIFIER(Command* cmd, int argc, char argv[MAX_TOK_PER_LINE][MAX_TOK_SIZE])
+#define def_invoke_fn_as(CMD_FN_IDENTIFIER) void CMD_FN_IDENTIFIER(Command* cmd, int argc, char argv[MAX_TOK_PER_LINE][MAX_TOK_SIZE])
 
 /**
  * @brief get certain commands from commands array

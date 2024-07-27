@@ -24,8 +24,6 @@
  * This function prints build information
  *
  * @param cmd reference to the invoked command
- * @param commands reference to the definition of commands in main
- * @param cmd_count size of commands (number of defined commands)
  * @param argc command line argument count.
  * @param argv command line arguments.
  * @return 0
@@ -33,75 +31,27 @@
 def_invoke_fn_as(version_fn);
 
 /**
- * @brief invoke function for `add` command
+ * @brief invoke function for `check` command
  *
- * This function gets one or more numbers (doubles)
- * and prints the summation of them.
+ * checks if a given string is a palindrome and
+ * if the given string is also an integer number
+ * then checks if the given number is a prime number, too.
  *
  * @param cmd reference to the invoked command
- * @param commands reference to the definition of commands in main
- * @param cmd_count size of commands (number of defined commands)
  * @param argc command line argument count.
  * @param argv command line arguments.
  * @return the result of the operation.
  */
-def_invoke_fn_as(addition_fn);
+def_invoke_fn_as(check_fn);
 
 /**
- * @brief invoke function for `sub` command
+ * @brief invoke function for `file` command - loads file
  *
- * This function gets one or more numbers (doubles)
- * and prints the subtraction of them.
- *
- * @param cmd reference to the invoked command
- * @param commands reference to the definition of commands in main
- * @param cmd_count size of commands (number of defined commands)
- * @param argc command line argument count.
- * @param argv command line arguments.
- * @return the result of the operation.
- */
-def_invoke_fn_as(subtraction_fn);
-
-/**
- * @brief invoke function for `mul` command
- *
- * This function gets one or more numbers (doubles)
- * and prints the multiplication of them.
+ * opens the given file, runs checks on each line,
+ * creates a report file from the name of the input file
+ * and writes the result in it
  *
  * @param cmd reference to the invoked command
- * @param commands reference to the definition of commands in main
- * @param cmd_count size of commands (number of defined commands)
- * @param argc command line argument count.
- * @param argv command line arguments.
- * @return the result of the operation.
- */
-def_invoke_fn_as(multiplication_fn);
-
-/**
- * @brief invoke function for `div` command
- *
- * This function gets one or more numbers (doubles)
- * and prints the division of them.
- *
- * @param cmd reference to the invoked command
- * @param commands reference to the definition of commands in main
- * @param cmd_count size of commands (number of defined commands)
- * @param argc command line argument count.
- * @param argv command line arguments.
- * @return the result of the operation.
- */
-def_invoke_fn_as(division_fn);
-
-/**
- * @brief invoke function for `f` command - loads file
- *
- * This function loads the given file and calculates
- * results for each line then insert the result at the beginning
- * of the next line parameters until the end.
- *
- * @param cmd reference to the invoked command
- * @param commands reference to the definition of commands in main
- * @param cmd_count size of commands (number of defined commands)
  * @param argc command line argument count.
  * @param argv command line arguments.
  * @return the result of the operation.

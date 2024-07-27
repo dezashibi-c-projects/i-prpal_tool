@@ -25,104 +25,48 @@ def_invoke_fn_as(version_fn)
     (void)cmd;
     (void)argc;
     (void)argv;
-    (void)cmd;
 
     puts(FG_LRED "Version: 1.0.0" COLOR_RESET);
     puts(FG_LGREEN "Programmed by Navid Dezashibi" COLOR_RESET);
     puts(FG_LGREEN "Built on: "__DATE__
                    " - "__TIME__ COLOR_RESET);
-
-    return 0;
 }
 
-def_invoke_fn_as(addition_fn)
+bool is_palindrome(char* string)
+{
+    size_t len = strlen(string);
+
+    if (len == 0)
+        return false;
+
+    if (len == 1)
+        return true;
+
+    for (int i = 0; i <= len / 2; ++i)
+    {
+        if (string[i] != string[len - i - 1])
+            return false;
+    }
+
+    return true;
+}
+
+def_invoke_fn_as(check_fn)
 {
     (void)cmd;
 
     do_arg_check(3);
 
-    double result = atof(argv[arg_starts_at]);
-    printf("%.2f", result);
-
-    for (int i = arg_starts_at + 1; i < argc; ++i)
+    for (int i = arg_starts_at; i < argc; ++i)
     {
-        double number = atof(argv[i]);
-        printf(" + %.2f", number);
-        result += number;
+        printf("'%s' -> ", argv[i]);
+
+        char* palindrome = is_palindrome(argv[i]) ? "palindrome" : "Not palindrome";
+
+        printf(FG_LBLUE "%s", palindrome);
+
+        puts(COLOR_RESET);
     }
-
-    printf(FG_LBLUE " = %.2f\n" COLOR_RESET, result);
-
-    return result;
-}
-
-def_invoke_fn_as(subtraction_fn)
-{
-    (void)cmd;
-
-    do_arg_check(3);
-
-    double result = atof(argv[arg_starts_at]);
-    printf("%.2f", result);
-
-    for (int i = arg_starts_at + 1; i < argc; ++i)
-    {
-        double number = atof(argv[i]);
-        printf(" - %.2f", number);
-        result -= number;
-    }
-
-    printf(FG_LBLUE " = %.2f\n" COLOR_RESET, result);
-
-    return result;
-}
-
-def_invoke_fn_as(multiplication_fn)
-{
-    (void)cmd;
-
-    do_arg_check(3);
-
-    double result = atof(argv[arg_starts_at]);
-    printf("%.2f", result);
-
-    for (int i = arg_starts_at + 1; i < argc; ++i)
-    {
-        double number = atof(argv[i]);
-        printf(" x %.2f", number);
-        result *= number;
-    }
-
-    printf(FG_LBLUE " = %.2f\n" COLOR_RESET, result);
-
-    return result;
-}
-
-def_invoke_fn_as(division_fn)
-{
-
-    do_arg_check(3);
-
-    double result = atof(argv[arg_starts_at]);
-    printf("%.2f", result);
-
-    for (int i = arg_starts_at + 1; i < argc; ++i)
-    {
-        double number = atof(argv[i]);
-        printf(" / %.2f", number);
-        if (number == 0)
-        {
-            printf(FG_RED "error: " COLOR_RESET "division by zero '%s'\nHelp: " FG_GREEN "%s\n" COLOR_RESET, cmd->name, cmd->help);
-
-            exit(-1);
-        }
-
-        result /= number;
-    }
-
-    printf(FG_LBLUE " = %.2f\n" COLOR_RESET, result);
-
-    return result;
 }
 
 def_invoke_fn_as(file_fn)
@@ -205,7 +149,7 @@ def_invoke_fn_as(file_fn)
             goto cleanup;
         }
 
-        curr_result = cmd->invoke(cmd, temp_argc, temp_argv);
+        cmd->invoke(cmd, temp_argc, temp_argv);
 
         ++curr_line;
     }
@@ -216,6 +160,4 @@ cleanup:
 
     if (must_fail)
         exit(-1);
-
-    return 0;
 }

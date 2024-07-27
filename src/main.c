@@ -23,11 +23,8 @@
 
 def_commands = {
     {"version", "shows version and build information", version_fn},
-    {"add", "adds 2 or more arguments together, needs at least 1 number", addition_fn},
-    {"sub", "subtracts 2 or more arguments from each other, needs at least 1 number", subtraction_fn},
-    {"mul", "multiplies 2 or more arguments from each other, needs at least 1 number", multiplication_fn},
-    {"div", "divides 2 or more arguments from each other, needs at least 1 number and non-zero numbers", division_fn},
-    {"f", "opens the given file, runs each operations per line, insert the result of it at the beginning of the next line and continues until the end of file", file_fn},
+    {"check", "checks if a given string is a palindrome and if the given string is also an integer number then checks if the given number is a prime number, too.", check_fn},
+    {"file", "opens the given file, runs checks on each line, creates a report file from the name of the input file and writes the result in it", file_fn},
 };
 def_commands_size = (sizeof(commands) / sizeof(commands[0]));
 
@@ -65,7 +62,7 @@ int main(int argc, char* argv[])
 
         check_token_size(argv[i], false);
 
-        strncpy(temp_argv[i], argv[i], strlen(argv[i]));
+        strcpy(temp_argv[i], argv[i]);
     }
 
     if (must_fail)

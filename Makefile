@@ -38,10 +38,10 @@ all: $(BUILDDIR)/$(TARGET)
 
 # Run the target
 run: $(BUILDDIR)/$(TARGET)
-	./$(BUILDDIR)/$(TARGET) add 1 2 3
+	./$(BUILDDIR)/$(TARGET) check radar 191 Navid
 
 run_input: $(BUILDDIR)/$(TARGET)
-	./$(BUILDDIR)/$(TARGET) f input.txt
+	./$(BUILDDIR)/$(TARGET) file input.txt
 
 # Rule to link the object files and create the executable
 $(BUILDDIR)/$(TARGET): $(OBJS)
