@@ -78,7 +78,7 @@ def_invoke_fn_as(file_fn)
         // Tokenize buffer based on ' ' (whitespace) and get each word separately
         curr_tok = strtok(buffer, WHITE_SPACE);
 
-        // Continue tokenization and add the rest of the tokens as arguments
+        // Continue tokenization to end of current line
         while (curr_tok != NULL)
         {
             check_token_size(curr_tok, true);
