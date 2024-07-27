@@ -42,7 +42,7 @@ def_invoke_fn_as(version_fn)
                    " - "__TIME__ COLOR_RESET);
 }
 
-bool is_palindrome(char* string)
+bool is_palindrome(const char* string)
 {
     int len = (int)strlen(string);
 
@@ -118,6 +118,42 @@ int is_prime(const char* str)
     return NOT_PRIME;
 }
 
+void check_prpl(const char* string, FILE* file)
+{
+    FILE* output = (file == NULL) ? stdout : file; // print to stdout if there is no file provided
+
+    fprintf(output, "'%s' -> ", string);
+
+    char* palindrome = is_palindrome(string) ? "palindrome" : "Not palindrome";
+
+    if (!file)
+        printf(FG_LBLUE);
+
+    fprintf(output, "%s", palindrome);
+
+    char* prime;
+
+    switch (is_prime(string))
+    {
+    case PRIME:
+        prime = "prime";
+        break;
+
+    case NOT_PRIME:
+        prime = "Not prime";
+        break;
+
+    default:
+        prime = "Not a number";
+        break;
+    };
+
+    fprintf(output, ", %s\n", prime);
+
+    if (!file)
+        printf(COLOR_RESET);
+}
+
 def_invoke_fn_as(check_fn)
 {
     (void)cmd;
@@ -126,32 +162,7 @@ def_invoke_fn_as(check_fn)
 
     for (int i = arg_starts_at; i < argc; ++i)
     {
-        printf("'%s' -> ", argv[i]);
-
-        char* palindrome = is_palindrome(argv[i]) ? "palindrome" : "Not palindrome";
-
-        printf(FG_LBLUE "%s", palindrome);
-
-        char* prime;
-
-        switch (is_prime(argv[i]))
-        {
-        case PRIME:
-            prime = "prime";
-            break;
-
-        case NOT_PRIME:
-            prime = "Not prime";
-            break;
-
-        default:
-            prime = "Not a number";
-            break;
-        };
-
-        printf(", %s", prime);
-
-        puts(COLOR_RESET);
+        check_prpl(argv[i], NULL);
     }
 }
 
@@ -250,30 +261,7 @@ def_invoke_fn_as(file_fn)
 
             if (curr_tok != NULL)
             {
-                fprintf(output_file, "'%s' -> ", curr_tok);
-
-                char* palindrome = is_palindrome(curr_tok) ? "palindrome" : "Not palindrome";
-
-                fprintf(output_file, "%s", palindrome);
-
-                char* prime;
-
-                switch (is_prime(curr_tok))
-                {
-                case PRIME:
-                    prime = "prime";
-                    break;
-
-                case NOT_PRIME:
-                    prime = "Not prime";
-                    break;
-
-                default:
-                    prime = "Not a number";
-                    break;
-                };
-
-                fprintf(output_file, ", %s\n", prime);
+                check_prpl(curr_tok, output_file);
             }
             curr_tok = strtok(NULL, WHITE_SPACE);
         }
