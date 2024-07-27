@@ -16,6 +16,7 @@
 #ifndef COMMANDS__H__
 #define COMMANDS__H__
 
+#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -86,7 +87,7 @@ typedef struct Command
 {
     char* name;
     char* help;
-    double (*invoke)(struct Command* cmd, struct Command* commands, size_t cmd_count, int argc, char argv[MAX_TOK_PER_LINE][MAX_TOK_SIZE]);
+    double (*invoke)(struct Command* cmd, int argc, char argv[MAX_TOK_PER_LINE][MAX_TOK_SIZE]);
 } Command;
 
 /**
@@ -96,7 +97,7 @@ typedef struct Command
  *
  * @param CMD_FN_IDENTIFIER command identifier name, better to end with `_fn`.
  */
-#define def_invoke_fn_as(CMD_FN_IDENTIFIER) double CMD_FN_IDENTIFIER(Command* cmd, Command* commands, size_t cmd_count, int argc, char argv[MAX_TOK_PER_LINE][MAX_TOK_SIZE])
+#define def_invoke_fn_as(CMD_FN_IDENTIFIER) double CMD_FN_IDENTIFIER(Command* cmd, int argc, char argv[MAX_TOK_PER_LINE][MAX_TOK_SIZE])
 
 /**
  * @brief get certain commands from commands array
@@ -110,7 +111,7 @@ typedef struct Command
  *
  * @return Command* -> pointer to the found command in the array
  */
-Command* get_command(char* name, Command commands[], size_t cmd_count);
+Command* get_command(char* name);
 
 /**
  * @brief shows usage message when something happens
@@ -121,9 +122,11 @@ Command* get_command(char* name, Command commands[], size_t cmd_count);
  *
  * @return void
  */
-void show_help(Command commands[], size_t cmd_count);
+void show_help();
 
-#define def_commands static Command commands[] =
-#define def_commands_size() static const size_t commands_size = (sizeof(commands) / sizeof(commands[0]))
+#define def_commands Command commands[]
+#define def_commands_size const size_t commands_size
+
+#define CALCULATE_COMMANDS_COUNT() (sizeof(commands) / sizeof(commands[0]))
 
 #endif // COMMANDS__H__

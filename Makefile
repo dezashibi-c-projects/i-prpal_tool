@@ -41,7 +41,7 @@ run: $(BUILDDIR)/$(TARGET)
 	./$(BUILDDIR)/$(TARGET) add 1 2 3
 
 run_input: $(BUILDDIR)/$(TARGET)
-	./$(BUILDDIR)/$(TARGET) f input.clc
+	./$(BUILDDIR)/$(TARGET) f input.txt
 
 # Rule to link the object files and create the executable
 $(BUILDDIR)/$(TARGET): $(OBJS)

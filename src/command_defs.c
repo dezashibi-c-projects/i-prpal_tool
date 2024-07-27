@@ -26,8 +26,6 @@ def_invoke_fn_as(version_fn)
     (void)argc;
     (void)argv;
     (void)cmd;
-    (void)commands;
-    (void)cmd_count;
 
     puts(FG_LRED "Version: 1.0.0" COLOR_RESET);
     puts(FG_LGREEN "Programmed by Navid Dezashibi" COLOR_RESET);
@@ -40,8 +38,6 @@ def_invoke_fn_as(version_fn)
 def_invoke_fn_as(addition_fn)
 {
     (void)cmd;
-    (void)commands;
-    (void)cmd_count;
 
     do_arg_check(3);
 
@@ -63,8 +59,6 @@ def_invoke_fn_as(addition_fn)
 def_invoke_fn_as(subtraction_fn)
 {
     (void)cmd;
-    (void)commands;
-    (void)cmd_count;
 
     do_arg_check(3);
 
@@ -86,8 +80,6 @@ def_invoke_fn_as(subtraction_fn)
 def_invoke_fn_as(multiplication_fn)
 {
     (void)cmd;
-    (void)commands;
-    (void)cmd_count;
 
     do_arg_check(3);
 
@@ -108,8 +100,6 @@ def_invoke_fn_as(multiplication_fn)
 
 def_invoke_fn_as(division_fn)
 {
-    (void)commands;
-    (void)cmd_count;
 
     do_arg_check(3);
 
@@ -206,16 +196,16 @@ def_invoke_fn_as(file_fn)
 
         printf("line %d) ", curr_line);
 
-        Command* cmd = get_command(temp_argv[1], commands, cmd_count);
+        Command* cmd = get_command(temp_argv[1]);
         if (cmd == NULL)
         {
             printf(FG_RED "error: " COLOR_RESET "command '%s' not found\n", temp_argv[1]);
-            show_help(commands, cmd_count);
+            show_help();
             must_fail = true;
             goto cleanup;
         }
 
-        curr_result = cmd->invoke(cmd, commands, cmd_count, temp_argc, temp_argv);
+        curr_result = cmd->invoke(cmd, temp_argc, temp_argv);
 
         ++curr_line;
     }

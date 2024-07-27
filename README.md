@@ -29,3 +29,24 @@ limitation constants as they are.
 
 So, the TL;DR; is that number of entries per line and number of character per each entry is limited. The lesson here again is not to be shy when introducing limitations and also don't be afraid
 to use fixed amount of memory especially when the program is supposed to end in a short amount of time.
+
+## External variables aka Globally accessible variables
+
+I've made a change in the way command works, there is a fact here and that is the `commands` and `command_size` are almost needed for the entire program lifetime, so instead of passing them around which makes
+functions always have to accept two extra arguments, this time I've defined them to be accessible globally first by removing `static` keyword from their definitions, then I've added the file `global.h` with the
+following content which allows other `C` files to treat to these identifiers as they are already defined and initialized because **"we're sure"** that later on after compiler linked all the object files together, there will be such a symbol to be used.
+
+```c
+#ifndef GLOBAL__H__
+#define GLOBAL__H__
+
+#include "command.h"
+#include <stddef.h>
+
+extern def_commands;
+extern def_commands_size;
+
+#endif // GLOBAL__H__
+```
+
+**By the way** I've just played around with `def_commands` and `def_commands_size` definitions in `command.h` to tweak them for my needs, it's not a big change though.

@@ -17,17 +17,19 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "global.h"
+
 #include "command.h"
 
 #include "colors.h"
 
-Command* get_command(char* name, Command commands[], size_t cmd_count)
+Command* get_command(char* name)
 {
-    assert(cmd_count > 0 && "There is no command defined");
+    assert(commands_size > 0 && "There is no command defined");
 
     Command* cmd = NULL;
 
-    for (size_t i = 0; i < cmd_count; ++i)
+    for (size_t i = 0; i < commands_size; ++i)
     {
         if (strcmp(name, commands[i].name) == 0)
         {
@@ -39,13 +41,13 @@ Command* get_command(char* name, Command commands[], size_t cmd_count)
     return cmd;
 }
 
-void show_help(Command commands[], size_t cmd_count)
+void show_help()
 {
-    assert(cmd_count > 0 && "There is no command defined");
+    assert(commands_size > 0 && "There is no command defined");
 
     puts(FG_GREEN "available commands:" COLOR_RESET);
 
-    for (size_t i = 0; i < cmd_count; ++i)
+    for (size_t i = 0; i < commands_size; ++i)
     {
         printf("\t" FG_LGREEN "%s" COLOR_RESET " -> " FG_LBLUE "%s\n" COLOR_RESET, commands[i].name, commands[i].help);
     }
