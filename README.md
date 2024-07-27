@@ -50,3 +50,41 @@ extern def_commands_size;
 ```
 
 **By the way** I've just played around with `def_commands` and `def_commands_size` definitions in `command.h` to tweak them for my needs, it's not a big change though.
+
+## `void` in parameter section of function definitions -> `void fn(void)`
+
+Here is an interesting thing that happened and remind me that I can talk about it here, some may ask what's the difference between the following definitions?
+
+```c
+int fn();
+
+int fn(void);
+
+```
+
+The answer is while they act the same but during the compilation they are not the same. I've changed the signature of `show_help` from `show_help(commands, commands_size)` to `show_help()`
+and I've forgot to update their calls in `main.c`, the program compiled, ran with no problem, why? because in `C` there is something called variable argument list which means you can
+pass any number of argument of a same type and then access them like an array inside the function body.
+
+So the point is to tell compiler that **"Hey I'm sure there are no parameter anymore and don't accept any"** we can specify that by adding `void` keyword when defining the function.
+
+And then if we try to compile again this is what we'll get:
+
+```bash
+src/main.c: In function ‘main’:
+src/main.c:42:9: error: too many arguments to function ‘show_help’
+   42 |         show_help(commands, commands_size);
+      |         ^~~~~~~~~
+In file included from src/main.c:17:
+src/command.h:125:6: note: declared here
+  125 | void show_help(void);
+      |      ^~~~~~~~~
+src/main.c:53:9: error: too many arguments to function ‘show_help’
+   53 |         show_help(commands, commands_size);
+      |         ^~~~~~~~~
+src/command.h:125:6: note: declared here
+  125 | void show_help(void);
+      |      ^~~~~~~~~
+make: *** [Makefile:54: obj/main.o] Error 1
+
+```

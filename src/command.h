@@ -122,7 +122,7 @@ Command* get_command(char* name);
  *
  * @return void
  */
-void show_help();
+void show_help(void);
 
 #define def_commands Command commands[]
 #define def_commands_size const size_t commands_size

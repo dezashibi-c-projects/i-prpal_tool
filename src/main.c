@@ -39,7 +39,7 @@ int main(int argc, char* argv[])
     {
         puts(FG_RED "error: " COLOR_RESET "not enough number of arguments\n\t" FG_GREEN "./prpal_tool.exe <op> <...args>\n" COLOR_RESET);
 
-        show_help(commands, commands_size);
+        show_help();
 
         return -1;
     }
@@ -50,7 +50,7 @@ int main(int argc, char* argv[])
     {
         printf(FG_RED "error: " COLOR_RESET "command '%s' not found\n", argv[1]);
 
-        show_help(commands, commands_size);
+        show_help();
 
         return -1;
     }
