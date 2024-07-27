@@ -1,5 +1,5 @@
 # ***************************************************************************************
-#    Project: CLI Calculator Project
+#    Project: Prime Number and Palindrome String Checker
 #    File: Makefile
 #    Date: 2024-07-26
 #    Author: Navid Dezashibi
