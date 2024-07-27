@@ -118,7 +118,7 @@ int is_prime(const char* str)
     return NOT_PRIME;
 }
 
-void check_prpl(const char* string, FILE* file)
+void check_prpal_and_get_output(const char* string, FILE* file)
 {
     FILE* output = (file == NULL) ? stdout : file; // print to stdout if there is no file provided
 
@@ -162,7 +162,7 @@ def_invoke_fn_as(check_fn)
 
     for (int i = arg_starts_at; i < argc; ++i)
     {
-        check_prpl(argv[i], NULL);
+        check_prpal_and_get_output(argv[i], NULL);
     }
 }
 
@@ -261,7 +261,7 @@ def_invoke_fn_as(file_fn)
 
             if (curr_tok != NULL)
             {
-                check_prpl(curr_tok, output_file);
+                check_prpal_and_get_output(curr_tok, output_file);
             }
             curr_tok = strtok(NULL, WHITE_SPACE);
         }
