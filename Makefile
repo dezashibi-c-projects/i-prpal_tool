@@ -38,7 +38,7 @@ all: $(BUILDDIR)/$(TARGET)
 
 # Run the target
 run: $(BUILDDIR)/$(TARGET)
-	./$(BUILDDIR)/$(TARGET) check radar 191 Navid
+	./$(BUILDDIR)/$(TARGET) check radar 191 Navid 456
 
 run_input: $(BUILDDIR)/$(TARGET)
 	./$(BUILDDIR)/$(TARGET) file input.txt
