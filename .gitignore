@@ -3,3 +3,4 @@
 *.pdb
 build
 obj
+*_output.*
