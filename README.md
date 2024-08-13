@@ -8,7 +8,7 @@ Prime Number and Palindrome String Checker cli tool in C
 
 ## Implementation
 
-I can use some codes from [this project of mine](https://github.com/dezashibi-c-projects/b-calculator) to bootstrap some codes in my project.
+I can use some codes from [this project of mine](https://github.com/dezashibi-c/b-calculator) to bootstrap some codes in my project.
 
 - I can use my `Makefile` it's pretty much good and handy
 - I can use `command.h`, `command.c`, the `main.c` itself and `colors.h`
@@ -24,7 +24,7 @@ Output: `'<string>' -> [not] palindrome, [not] prime`
 
 ## Memory Management
 
-I would say this program just like the [previous one](https://github.com/dezashibi-c-projects/b-calculator) has limitations for sure, I might tweak limitations later on but for now I will leave the
+I would say this program just like the [previous one](https://github.com/dezashibi-c/b-calculator) has limitations for sure, I might tweak limitations later on but for now I will leave the
 limitation constants as they are.
 
 So, the TL;DR; is that number of entries per line and number of character per each entry is limited. The lesson here again is not to be shy when introducing limitations and also don't be afraid
